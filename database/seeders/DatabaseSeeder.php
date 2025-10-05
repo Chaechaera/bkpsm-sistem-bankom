@@ -19,5 +19,9 @@ class DatabaseSeeder extends Seeder
             'nama' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        \Spatie\Permission\Models\Permission::firstOrCreate(['name' => 'view superadmin dashboard', 'guard_name' => 'web']);
+        \Spatie\Permission\Models\Permission::firstOrCreate(['name' => 'view admin dashboard', 'guard_name' => 'web']);
+        
     }
 }
