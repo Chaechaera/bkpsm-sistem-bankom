@@ -12,10 +12,17 @@ class RefSubunitkerja extends Model
 
     protected $table = 'ref_subunitkerjas';
 
-    protected $fillable = ['sub_unitkerja'];
+    protected $fillable = ['id', 'unitkerja_id', 'sub_unitkerja', 'singkatan'];
 
-    /**public function users() 
+    // Relasi ke Unit Kerja
+    public function unitkerja()
     {
-        return $this->hasMany(User::class, 'subunitkerja_id');
-    }*/
+        return $this->belongsTo(RefUnitkerja::class, 'unitkerja_id');
+    }
+
+    // Relasi ke Usulan Kegiatan
+    public function usulankegiatans()
+    {
+        return $this->hasMany(Usulankegiatan::class, 'subunitkerja_id');
+    }
 }

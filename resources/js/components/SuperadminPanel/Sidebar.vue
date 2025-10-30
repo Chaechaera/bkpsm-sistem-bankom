@@ -1,3 +1,10 @@
+<script setup>
+import { Link, usePage } from '@inertiajs/vue3'
+
+const page = usePage()
+const currentRoute = page.url
+</script>
+
 <template>
   <aside class="w-64 bg-white shadow-md flex flex-col">
     <!-- Logo -->
@@ -8,44 +15,60 @@
 
     <!-- Menu -->
     <nav class="flex-1 p-4 space-y-2">
-      <a
-        href="/dashboard"
-        class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-indigo-100 text-indigo-600 font-medium"
+      <!-- Dashboard -->
+      <Link
+        :href="route('dashboard')"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium"
+        :class="currentRoute.startsWith('/dashboard')
+          ? 'bg-indigo-100 text-indigo-600'
+          : 'text-gray-700 hover:bg-gray-100'"
       >
         <i class="fa-solid fa-chart-line"></i>
         Dashboard
-      </a>
-      <a
-        href="/usulan"
-        class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-700"
+      </Link>
+
+      <!-- Daftar Usulan Yang Masuk -->
+      <Link
+        :href="route('usulan.pending')"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium"
+        :class="currentRoute.startsWith('/superadmin/usulan/pending')
+          ? 'bg-indigo-100 text-indigo-600'
+          : 'text-gray-700 hover:bg-gray-100'"
       >
         <i class="fa-solid fa-list"></i>
         Daftar Usulan Yang Masuk
-      </a>
-      <a
+      </Link>
+
+      <!-- Pengakuan PK ASN -->
+      <Link
         href="/pengajuan"
-        class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-700"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium"
+        :class="currentRoute.startsWith('/pengajuan')
+          ? 'bg-indigo-100 text-indigo-600'
+          : 'text-gray-700 hover:bg-gray-100'"
       >
         <i class="fa-solid fa-box"></i>
         Pengakuan PK ASN
-      </a>
+      </Link>
 
-      <!-- Other -->
+      <!-- Other Section -->
       <div class="mt-6 text-xs text-gray-400 uppercase">Other</div>
-      <a
+
+      <Link
         href="#"
-        class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-700"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-gray-100"
       >
         <i class="fa-solid fa-headset"></i>
         Support
-      </a>
-      <a
+      </Link>
+
+      <Link
         href="#"
-        class="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-700"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg font-medium text-gray-700 hover:bg-gray-100"
       >
         <i class="fa-solid fa-gear"></i>
         Settings
-      </a>
+      </Link>
     </nav>
   </aside>
 </template>

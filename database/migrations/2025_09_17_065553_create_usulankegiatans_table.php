@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('lokasi_kegiatan')->nullable();
             $table->foreignId('carapelatihan_id')->constrained('ref_carapelatihans');
             $table->date('tanggal_pelaksanaan')->nullable();
-            $table->enum('statususulan_kegiatan', ['draft', 'pending', 'approved', 'rejected'])->default('draft');
+            $table->enum('statususulan_kegiatan', ['draft', 'pending', 'approved', 'rejected', 'in_progress', 'completed', 'finish'])->default('draft');
             $table->foreignId('created_by')->constrained('users');
             $table->timestamps();
         });

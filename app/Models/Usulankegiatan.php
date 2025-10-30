@@ -21,7 +21,8 @@ class Usulankegiatan extends Model
         'created_by'
     ];
 
-    public function detailkegiatan() {
+    public function detailkegiatan()
+    {
         return $this->hasMany(Detailkegiatan::class, 'usulankegiatan_id');
     }
 
@@ -30,11 +31,19 @@ class Usulankegiatan extends Model
         return $this->belongsTo(RefSubunitkerja::class, 'subunitkerja_id');
     }
 
-    public function identitassurat() {
+    public function identitassurat()
+    {
         return $this->belongsTo(Identitassurat::class, 'identitassurat_id');
     }
 
-    public function createby() {
+    public function createby()
+    {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function laporankegiatan()
+    {
+        return $this->hasOne(Laporankegiatan::class, 'usulankegiatan_id');
+    }
+
 }
