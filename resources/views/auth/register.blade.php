@@ -2,18 +2,11 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <!-- NIP -->
-        <div>
-            <x-input-label for="nip" :value="__('NIP')" />
-            <x-text-input id="nip" class="block mt-1 w-full" type="text" name="nip" :value="old('nip')" required autofocus autocomplete="nip" />
-            <x-input-error :messages="$errors->get('nip')" class="mt-2" />
-        </div>
-
         <!-- Name -->
         <div>
-            <x-input-label for="nama" :value="__('Nama')" />
-            <x-text-input id="nama" class="block mt-1 w-full" type="text" name="nama" :value="old('nama')" required autofocus autocomplete="nama" />
-            <x-input-error :messages="$errors->get('nama')" class="mt-2" />
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -21,17 +14,6 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Pilih Sub Unit Kerja OPD -->
-        <div class="mt-4">
-            <x-input-label for="subunitkerja_id" :value="__('Sub Unit Kerja')" />
-            <select id="subunitkerja_id" name="subunitkerja_id" class="block mt-1 w-full" required>
-                @foreach($subunitkerjas as $s)
-            <option value="{{ $s->id }}">{{ $s->sub_unitkerja }}</option>
-                @endforeach
-            </select>
-            <x-input-error :messages="$errors->get('subunitkerja_id')" class="mt-2" />
         </div>
 
         <!-- Password -->
